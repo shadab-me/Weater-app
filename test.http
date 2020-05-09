@@ -1,0 +1,10 @@
+Get http://localhost:8000/home
+
+
+
+###
+POST http://localhost:8000/home
+{
+    "name":"shadab",
+    "city": "Rampur"
+}
