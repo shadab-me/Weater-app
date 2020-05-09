@@ -1,5 +1,4 @@
-import { response } from "express";
-
+ 
 /* Global Variables */
 let gen = document.getElementById('generate');
 let feel = document.getElementById('feelings').value;
@@ -28,7 +27,7 @@ gen.addEventListener('click', function(){
 
 
 
-    return fetch('http://localhost:3000/api',{
+    return fetch('http://localhost:3000', { mode: 'no-cors'},{
     method: "POST",
     body:JSON.stringify({
         temperature:temp,
