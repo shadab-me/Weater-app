@@ -11,10 +11,14 @@ const apiKey = '04e27c99302e8b6d91b215783b8e4ff3';
 
 gen.addEventListener('click', function(){
  let url = `https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?zip=${zip.value},IN&appid=${apiKey}`;
-fetch(url).then(function(response) {
+fetch(url,{
+    method: "GET",
+})
+.then(function(response) {
     return response.json();
-}).then(function(response) {
-  let temperature = response.main.temp;
+})
+.then(function(response) {
+    const {main: { temp:temperature}} =response
   console.log(temperature);
   console.log(newDate);
   console.log(feel.value);
@@ -30,17 +34,21 @@ fetch(url).then(function(response) {
       }
 
   })
- }).then(function(response) {
-     console.log(response.json());
-     return response.json();
- }).then(function({temperature, feeling, date}) {
+ })
+ .then(function(response) {
+      return response.json();
+ })
+ .then(function({temperature, feeling, date}) {
      console.log(temperature);
      console.log(feeling);
 document.getElementById('date').innerHTML = date + 'Date'
 document.getElementById('temp').innerHTML = temperature +'Temp'
 document.getElementById('content').innerHTML = feeling +'feeling'
 })
+.catch(function(error) {
+    console.log('Request failed', error)
 })
+});
 
 
 
