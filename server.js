@@ -8,15 +8,7 @@ var cors = require('cors');
 projectData = {};
 
 // Require Express to run server and routes
-app.get('/GetApi', (req, res) => {
-res.send(projectData);
-});
 
- app.post('/api', function(req, res) {
-     const newData = req.body;
-     projectData = {...projectData};
-     res.status(200).send(projectData);
- });
 // Start up an instance of app
 
 /* Middleware*/
@@ -31,7 +23,16 @@ app.use(cors())
 
 // Initialize the main project folder
 app.use(express.static('website'));
-
+app.get('/GetApi', (req, res) => {
+    res.send(projectData);
+    });
+    
+     app.post('/api', function(req, res) {
+         const newData = req.body;
+         console.log(req.body);
+         projectData = req.body;
+         res.status(200).send(projectData);
+     });
 
 // Setup Server
 

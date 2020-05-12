@@ -18,7 +18,7 @@ fetch(url,{
     return response.json();
 })
 .then(function(response) {
-    const {main: { temp:temperature}} =response
+  const  temperature =response.main.temp;
   console.log(temperature);
   console.log(newDate);
   console.log(feel.value);
@@ -39,8 +39,6 @@ fetch(url,{
       return response.json();
  })
  .then(function({temperature, feeling, date}) {
-     console.log(temperature);
-     console.log(feeling);
 document.getElementById('date').innerHTML = date + 'Date'
 document.getElementById('temp').innerHTML = temperature +'Temp'
 document.getElementById('content').innerHTML = feeling +'feeling'
