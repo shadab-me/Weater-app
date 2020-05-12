@@ -10,7 +10,7 @@ let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
 const apiKey = '04e27c99302e8b6d91b215783b8e4ff3';
 
 gen.addEventListener('click', function(){
- let url = `https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?zip=${zip.value},IN&appid=${apiKey}`;
+ let url = `https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?zip=${zip.value},IN&appid=${apiKey}&units=metric`;
 fetch(url,{
     method: "GET",
 })
@@ -36,12 +36,13 @@ fetch(url,{
   })
  })
  .then(function(response) {
+     console.log(response.json);
       return response.json();
  })
  .then(function({temperature, feeling, date}) {
-document.getElementById('date').innerHTML = date + 'Date'
-document.getElementById('temp').innerHTML = temperature +'Temp'
-document.getElementById('content').innerHTML = feeling +'feeling'
+document.getElementById('date').innerHTML = 'Date ' + date
+document.getElementById('temp').innerHTML = 'Temp ' + temperature
+document.getElementById('content').innerHTML = 'feeling ' + feeling
 })
 .catch(function(error) {
     console.log('Request failed', error)
