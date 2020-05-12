@@ -35,7 +35,7 @@ app.get('/GetApi', (req, res) => {
      });
 
 // Setup Server
-
-app.listen(3000, function(){
-    console.log('I am listening');
+const PORT =3000
+app.listen(PORT, function(){
+    console.log('I am listening on port'+ " " +PORT);
 });

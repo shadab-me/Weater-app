@@ -10,8 +10,10 @@ let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
 const apiKey = '04e27c99302e8b6d91b215783b8e4ff3';
 
 gen.addEventListener('click', function(){
- let url = `https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?zip=${zip.value},IN&appid=${apiKey}&units=metric`;
-fetch(url,{
+ let url = `http://api.openweathermap.org/data/2.5/weather?zip=${zip.value},IN&appid=${apiKey}&units=metric`;
+console.log(zip.value.length);
+ if(zip.value.length > 0){
+ fetch(url,{
     method: "GET",
 })
 .then(function(response) {
@@ -46,7 +48,10 @@ document.getElementById('content').innerHTML = 'feeling ' + feeling
 })
 .catch(function(error) {
     console.log('Request failed', error)
-})
+})}
+else{
+    alert('Enter Zip Code !!!!');
+}
 });
 
 
